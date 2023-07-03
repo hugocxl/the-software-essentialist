@@ -14,7 +14,15 @@ export class UserController {
       })
 
       return user
-    } catch (error: any) {
+    } catch (e) {
+      const error = e as Prisma.PrismaClientKnownRequestError
+
+      if (error.code === 'P2002') {
+        throw new Error(
+          `Failed to create user: User with the same email already exists`
+        )
+      }
+
       throw new Error(`Failed to create user: ${error.message}`)
     }
   }
@@ -30,7 +38,13 @@ export class UserController {
       })
 
       return user
-    } catch (error: any) {
+    } catch (e) {
+      const error = e as Prisma.PrismaClientKnownRequestError
+
+      if (error.code === 'P2025') {
+        throw new Error(`Failed to edit user: User not found`)
+      }
+
       throw new Error(`Failed to edit user: ${error.message}`)
     }
   }
@@ -41,7 +55,9 @@ export class UserController {
         where: { email },
       })
       return user
-    } catch (error: any) {
+    } catch (e) {
+      const error = e as Prisma.PrismaClientKnownRequestError
+
       throw new Error(`Failed to get user by email: ${error.message}`)
     }
   }

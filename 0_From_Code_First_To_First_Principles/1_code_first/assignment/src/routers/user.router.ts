@@ -13,17 +13,18 @@ router.get('/', async (req, res) => {
   try {
     const user = await userController.getUserByEmail(email as string)
     return res.status(200).json(user)
-  } catch (error) {
-    return res.status(400).json('Error creating user')
+  } catch (error: any) {
+    return res.status(500).json(error.message)
   }
 })
 
 router.post('/new', async (req, res) => {
   try {
     const user = await userController.createUser(req.body)
+
     return res.status(200).json(user)
-  } catch (error) {
-    return res.status(400).json('Error creating user')
+  } catch (error: any) {
+    return res.status(500).json(error.message)
   }
 })
 
@@ -37,9 +38,10 @@ router.post('/edit/:userId', async (req, res) => {
       firstName,
       lastName,
     })
+
     return res.status(200).json(user)
-  } catch (error) {
-    return res.status(400).json('Error creating user')
+  } catch (error: any) {
+    return res.status(500).json(error.message)
   }
 })
 
