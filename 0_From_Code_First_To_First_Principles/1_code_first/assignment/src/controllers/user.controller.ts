@@ -1,4 +1,4 @@
-import { PrismaClient, User } from '@prisma/client'
+import { PrismaClient, User, Prisma } from '@prisma/client'
 
 export class UserController {
   prisma: PrismaClient
@@ -7,19 +7,22 @@ export class UserController {
     this.prisma = new PrismaClient()
   }
 
-  async createUser(userData: User): Promise<User> {
+  async createUser(userData: Prisma.UserCreateInput): Promise<User> {
     try {
       const user = await this.prisma.user.create({
         data: userData,
       })
 
       return user
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(`Failed to create user: ${error.message}`)
     }
   }
 
-  async editUser(userId: User['id'], userData: Partial<User>): Promise<User> {
+  async editUser(
+    userId: number,
+    userData: Prisma.UserUpdateInput
+  ): Promise<User> {
     try {
       const user = await this.prisma.user.update({
         where: { id: userId },
@@ -27,18 +30,18 @@ export class UserController {
       })
 
       return user
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(`Failed to edit user: ${error.message}`)
     }
   }
 
-  async getUserByEmail(email: User['email']): Promise<User | null> {
+  async getUserByEmail(email: string): Promise<User | null> {
     try {
       const user = await this.prisma.user.findUnique({
         where: { email },
       })
       return user
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(`Failed to get user by email: ${error.message}`)
     }
   }
