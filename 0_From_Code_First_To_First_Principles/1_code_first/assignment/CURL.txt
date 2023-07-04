@@ -1,0 +1,15 @@
+curl -X POST -H "Content-Type: application/json" -d '{
+  "email": "someuser@gmail.com",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe"
+}' http://localhost:8000/users/new
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "firstName": "Johnathan",
+  "lastName": "Doel"
+}' http://localhost:8000/users/edit/1
+
+curl http://localhost:8000/users?email=someuser@gmail.com
+
+
