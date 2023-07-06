@@ -6,7 +6,7 @@ describe('fizzbuzz', () => {
   })
 
   it('should return a string', () => {
-    expect(typeof fizzbuzz()).toEqual('string')
+    expect(typeof fizzbuzz(0)).toEqual('string')
   })
 
   it('should admit a number a return it as a string', () => {
