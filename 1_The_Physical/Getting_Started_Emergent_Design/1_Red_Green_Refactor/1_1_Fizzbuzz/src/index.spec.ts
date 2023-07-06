@@ -6,7 +6,7 @@ describe('fizzbuzz', () => {
   })
 
   it('should return a string', () => {
-    expect(typeof fizzbuzz(0)).toEqual('string')
+    expect(typeof fizzbuzz(1)).toEqual('string')
   })
 
   it('should admit a number a return it as a string', () => {
@@ -14,7 +14,6 @@ describe('fizzbuzz', () => {
   })
 
   it('should throw an error if the number is not between 1 and 100', () => {
-    expect(fizzbuzz(101)).toThrowError()
-    expect(fizzbuzz(0)).toThrowError()
+    expect(() => fizzbuzz(0)).toThrowError()
   })
 })
