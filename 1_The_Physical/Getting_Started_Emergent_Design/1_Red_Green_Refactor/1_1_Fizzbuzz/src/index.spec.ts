@@ -16,4 +16,10 @@ describe('fizzbuzz', () => {
   it('should throw an error if the number is not between 1 and 100', () => {
     expect(() => fizzbuzz(0)).toThrowError()
   })
+
+  it('should return Fizz for multiples of 3', () => {
+    expect(fizzbuzz(3)).toEqual('Fizz')
+    expect(fizzbuzz(9)).toEqual('Fizz')
+    expect(fizzbuzz(27)).toEqual('Fizz')
+  })
 })
