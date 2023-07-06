@@ -3,17 +3,12 @@ export function fizzbuzz(n: number): string {
     throw new Error('n must be between 1 and 100')
   }
 
-  if (n % 3 === 0 && n % 5 === 0) {
-    return 'FizzBuzz'
-  }
+  const isMultipleOf3 = n % 3 === 0
+  const isMultipleOf5 = n % 5 === 0
 
-  if (n % 3 === 0) {
-    return 'Fizz'
-  }
-
-  if (n % 5 === 0) {
-    return 'Buzz'
-  }
+  if (isMultipleOf3 && isMultipleOf5) return 'FizzBuzz'
+  if (isMultipleOf3) return 'Fizz'
+  if (isMultipleOf5) return 'Buzz'
 
   return String(n)
 }
