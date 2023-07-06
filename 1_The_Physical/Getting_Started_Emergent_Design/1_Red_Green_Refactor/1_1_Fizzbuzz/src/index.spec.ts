@@ -28,4 +28,10 @@ describe('fizzbuzz', () => {
     expect(fizzbuzz(25)).toEqual('Buzz')
     expect(fizzbuzz(20)).toEqual('Buzz')
   })
+
+  it('should return FizzBuzz for multiples of both 5 and 3', () => {
+    expect(fizzbuzz(15)).toEqual('FizzBuzz')
+    expect(fizzbuzz(30)).toEqual('FizzBuzz')
+    expect(fizzbuzz(60)).toEqual('FizzBuzz')
+  })
 })
