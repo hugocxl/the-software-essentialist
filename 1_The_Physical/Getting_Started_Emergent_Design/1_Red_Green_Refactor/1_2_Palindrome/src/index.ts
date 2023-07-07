@@ -1,1 +1,3 @@
-export class PalindromeChecker {}
+export class PalindromeChecker {
+  public static check() {}
+}

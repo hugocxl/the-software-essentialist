@@ -8,8 +8,6 @@ describe('palindrome checker', () => {
   })
 
   it('should have a check method', () => {
-    const palindromeChecker = new PalindromeChecker()
-
-    expect(palindromeChecker.check).toBeDefined()
+    expect(PalindromeChecker.check).toBeDefined()
   })
 })
