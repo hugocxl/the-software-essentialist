@@ -10,4 +10,8 @@ describe('palindrome checker', () => {
   it('should have a check method', () => {
     expect(PalindromeChecker.check).toBeDefined()
   })
+
+  it('should admit a string', () => {
+    expect(() => PalindromeChecker.check('test')).not.toThrowError()
+  })
 })
