@@ -14,4 +14,8 @@ describe('palindrome checker', () => {
   it('should admit a string', () => {
     expect(() => PalindromeChecker.check('test')).not.toThrowError()
   })
+
+  it('should return a boolean', () => {
+    expect(typeof PalindromeChecker.check('test')).toBe('boolean')
+  })
 })
