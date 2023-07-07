@@ -1,5 +1,9 @@
+import { PalindromeChecker } from './index'
+
 describe('palindrome checker', () => {
-  it('shoud exist', () => {
+  it('should exist', () => {
+    const palindromeChecker = new PalindromeChecker()
+
     expect(palindromeChecker).toBeDefined()
   })
 })
