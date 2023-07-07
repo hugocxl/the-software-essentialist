@@ -2,9 +2,7 @@ import { PalindromeChecker } from './index'
 
 describe('palindrome checker', () => {
   it('should exist', () => {
-    const palindromeChecker = new PalindromeChecker()
-
-    expect(palindromeChecker).toBeDefined()
+    expect(PalindromeChecker).toBeDefined()
   })
 
   it('should have a check method', () => {
@@ -25,6 +23,7 @@ describe('palindrome checker', () => {
     { value: 'mom', expected: true },
     { value: 'Wow', expected: true },
     { value: 'Was It A Rat I Saw', expected: true },
+    { value: 'Not a palindrome', expected: false },
   ])(
     'when checking "$value" it should return "$expected"',
     ({ value, expected }) => {
