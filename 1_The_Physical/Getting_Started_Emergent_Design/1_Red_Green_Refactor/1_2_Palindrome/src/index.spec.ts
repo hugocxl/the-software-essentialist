@@ -18,4 +18,8 @@ describe('palindrome checker', () => {
   it('should return a boolean', () => {
     expect(typeof PalindromeChecker.check('test')).toBe('boolean')
   })
+
+  it('when checking "bill" it should return false', () => {
+    expect(PalindromeChecker.check('bill')).toBe(false)
+  })
 })
