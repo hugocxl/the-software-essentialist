@@ -1,4 +1,4 @@
-import { fizzbuzz } from './fizzbuzz'
+import { fizzbuzz, FIZZBUZZ, FIZZ, BUZZ } from './fizzbuzz'
 
 describe('fizzbuzz', () => {
   it('should be defined', () => {
@@ -15,23 +15,22 @@ describe('fizzbuzz', () => {
 
   it('should throw an error if the number is not between 1 and 100', () => {
     expect(() => fizzbuzz(0)).toThrowError()
+    expect(() => fizzbuzz(101)).toThrowError()
   })
 
-  it('should return Fizz for multiples of 3', () => {
-    expect(fizzbuzz(3)).toEqual('Fizz')
-    expect(fizzbuzz(9)).toEqual('Fizz')
-    expect(fizzbuzz(27)).toEqual('Fizz')
-  })
-
-  it('should return Buzz for multiples of 5', () => {
-    expect(fizzbuzz(5)).toEqual('Buzz')
-    expect(fizzbuzz(25)).toEqual('Buzz')
-    expect(fizzbuzz(20)).toEqual('Buzz')
-  })
-
-  it('should return FizzBuzz for multiples of both 5 and 3', () => {
-    expect(fizzbuzz(15)).toEqual('FizzBuzz')
-    expect(fizzbuzz(30)).toEqual('FizzBuzz')
-    expect(fizzbuzz(60)).toEqual('FizzBuzz')
-  })
+  test.each([
+    { value: 3, expected: FIZZ },
+    { value: 42, expected: FIZZ },
+    { value: 5, expected: BUZZ },
+    { value: 25, expected: BUZZ },
+    { value: 15, expected: FIZZBUZZ },
+    { value: 45, expected: FIZZBUZZ },
+    { value: 43, expected: '43' },
+    { value: 61, expected: '61' },
+  ])(
+    'should return $expected when the value is $value',
+    ({ value, expected }) => {
+      expect(fizzbuzz(value)).toBe(expected)
+    }
+  )
 })
