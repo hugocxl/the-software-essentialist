@@ -1,3 +1,3 @@
 export class PalindromeChecker {
-  public static check() {}
+  public static check(str: string) {}
 }
