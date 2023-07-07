@@ -24,6 +24,7 @@ describe('palindrome checker', () => {
     { value: 'cat', expected: false },
     { value: 'mom', expected: true },
     { value: 'Wow', expected: true },
+    { value: 'Was It A Rat I Saw', expected: true },
   ])(
     'when checking "$value" it should return "$expected"',
     ({ value, expected }) => {
