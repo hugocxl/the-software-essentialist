@@ -21,9 +21,10 @@ describe('palindrome checker', () => {
 
   test.each([
     { value: 'bill', expected: false },
+    { value: 'cat', expected: false },
     { value: 'mom', expected: true },
   ])(
-    'when checking "$value" it should return $expected',
+    'when checking "$value" it should return "$expected"',
     ({ value, expected }) => {
       expect(PalindromeChecker.check(value)).toBe(expected)
     }
