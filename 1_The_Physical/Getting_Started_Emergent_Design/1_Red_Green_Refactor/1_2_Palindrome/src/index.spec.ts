@@ -1,33 +1,32 @@
 import { PalindromeChecker } from './index'
 
-describe('palindrome checker', () => {
-  it('should exist', () => {
-    expect(PalindromeChecker).toBeDefined()
+describe('PalindromeChecker', () => {
+  describe('recognizes simple words as palindromes ignoring case', () => {
+    it.each(['mom', 'Wow'])('knows that "%s" is a palindrome', (value) => {
+      expect(PalindromeChecker.check(value)).toBe(true)
+    })
+
+    it.each(['bill', 'House'])(
+      'knows that "%s" is not a palindrome',
+      (value) => {
+        expect(PalindromeChecker.check(value)).toBe(false)
+      }
+    )
   })
 
-  it('should have a check method', () => {
-    expect(PalindromeChecker.check).toBeDefined()
-  })
+  describe('recognizes sentences as palindromes ignoring case', () => {
+    it.each(['Was It A Rat I Saw'])(
+      'knows that "%s" is a palindrome',
+      (value) => {
+        expect(PalindromeChecker.check(value)).toBe(true)
+      }
+    )
 
-  it('should admit a string', () => {
-    expect(() => PalindromeChecker.check('test')).not.toThrowError()
+    it.each(['Hello world!'])(
+      'knows that "%s" is not a palindrome',
+      (value) => {
+        expect(PalindromeChecker.check(value)).toBe(false)
+      }
+    )
   })
-
-  it('should return a boolean', () => {
-    expect(typeof PalindromeChecker.check('test')).toBe('boolean')
-  })
-
-  test.each([
-    { value: 'bill', expected: false },
-    { value: 'cat', expected: false },
-    { value: 'mom', expected: true },
-    { value: 'Wow', expected: true },
-    { value: 'Was It A Rat I Saw', expected: true },
-    { value: 'Not a palindrome', expected: false },
-  ])(
-    'when checking "$value" it should return "$expected"',
-    ({ value, expected }) => {
-      expect(PalindromeChecker.check(value)).toBe(expected)
-    }
-  )
 })
