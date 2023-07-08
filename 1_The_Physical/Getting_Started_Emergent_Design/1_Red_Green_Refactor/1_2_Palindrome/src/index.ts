@@ -3,12 +3,14 @@ export class PalindromeChecker {
     return str.split('').reverse().join('')
   }
 
+  private static cleanUpString(str: string) {
+    return str.toLowerCase().replace(/\s/g, '')
+  }
+
   public static check(str: string) {
-    const lowerCaseStr = str.toLowerCase().replace(/\s/g, '')
-    const reversedString = this.reverseString(lowerCaseStr)
+    const cleanedUpString = this.cleanUpString(str)
+    const reversedString = this.reverseString(cleanedUpString)
 
-    if (reversedString === lowerCaseStr) return true
-
-    return false
+    return reversedString === cleanedUpString
   }
 }
