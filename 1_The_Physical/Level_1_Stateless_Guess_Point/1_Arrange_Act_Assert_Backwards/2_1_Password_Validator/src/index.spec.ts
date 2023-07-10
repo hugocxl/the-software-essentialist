@@ -24,4 +24,16 @@ describe('PasswordValidator', () => {
       }
     )
   })
+
+  describe('knows whether a password contains at least one digit', () => {
+    it.each(['password'])(
+      'knows that %p does not contains any digit and returns an "InvalidCharactersError" error',
+      (value) => {
+        const result = PasswordValidator.validate(value)
+
+        expect(result.result).toBe(false)
+        expect(result.errors[0]).toBe('InvalidCharactersError')
+      }
+    )
+  })
 })
