@@ -1,3 +1,5 @@
+import { PasswordValidator } from './index'
+
 describe('PasswordValidator', () => {
   test('knows that "mom" is too short and returns a "InvalidLengthError" error', () => {
     const result = PasswordValidator.validate('mom')
