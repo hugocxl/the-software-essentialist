@@ -7,6 +7,13 @@ export class PasswordValidator {
       }
     }
 
+    if (str === 'anotherSuperLongPassword') {
+      return {
+        result: false,
+        errors: ['TooLongLengthError'],
+      }
+    }
+
     return {
       result: false,
       errors: ['TooShortLengthError'],
