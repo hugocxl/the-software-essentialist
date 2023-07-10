@@ -3,10 +3,13 @@ export class StatsCalculator {
     const min = sequence.reduce((min, current) =>
       current < min ? current : min
     )
+    const max = sequence.reduce((max, current) =>
+      current > max ? current : max
+    )
 
     return {
       min,
-      max: 0,
+      max,
       average: 0,
       count: 0,
     }
