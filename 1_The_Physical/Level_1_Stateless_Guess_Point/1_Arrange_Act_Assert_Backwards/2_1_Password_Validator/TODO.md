@@ -13,10 +13,15 @@
 
 ## Upfront desing
 
-```
-  const validationResult = PasswordValidator.validate(password)
-  const validationResult = {
-    result: boolean,
+```ts
+  interface PasswordValidator {
+    public static validate: (password: string) => Result
+  }
+
+  interface Result {
+    result: boolean
     errors: string[]
   }
+
+  const validationResult = PasswordValidator.validate(password)
 ```
