@@ -1,9 +1,8 @@
+describe('PasswordValidator', () => {
+  test('knows that "mom" is too short and returns a "InvalidLengthError" error', () => {
+    const result = PasswordValidator.validate('mom')
 
-describe('password validator', () => {
-
-  test('hello', () => {
-    expect("between 5 and 15").toContain('5 and 15')
+    expect(result.result).toBe(false)
+    expect(result.errors[0]).toBe('InvalidLengthError')
   })
 })
-
-
