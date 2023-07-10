@@ -1,13 +1,13 @@
 export class PasswordValidator {
   public static validate(str: string) {
-    if (str === 'incrediblyLongPassword') {
+    if (str.length < 5) {
       return {
         result: false,
-        errors: ['TooLongLengthError'],
+        errors: ['TooShortLengthError'],
       }
     }
 
-    if (str === 'anotherSuperLongPassword') {
+    if (str.length > 15) {
       return {
         result: false,
         errors: ['TooLongLengthError'],
@@ -15,8 +15,8 @@ export class PasswordValidator {
     }
 
     return {
-      result: false,
-      errors: ['TooShortLengthError'],
+      result: true,
+      errors: [],
     }
   }
 }
