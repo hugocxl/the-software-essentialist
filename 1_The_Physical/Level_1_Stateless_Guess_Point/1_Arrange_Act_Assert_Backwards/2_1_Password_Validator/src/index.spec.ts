@@ -1,17 +1,27 @@
 import { PasswordValidator } from './index'
 
 describe('PasswordValidator', () => {
-  test('knows that "mom" is too short and returns a "TooShortLengthError" error', () => {
-    const result = PasswordValidator.validate('mom')
+  describe('knows whether a password is too short', () => {
+    it.each(['mom', 'cat'])(
+      'knows that %p is too short and returns a "TooShortLengthError" error',
+      (value) => {
+        const result = PasswordValidator.validate(value)
 
-    expect(result.result).toBe(false)
-    expect(result.errors[0]).toBe('TooShortLengthError')
+        expect(result.result).toBe(false)
+        expect(result.errors[0]).toBe('TooShortLengthError')
+      }
+    )
   })
 
-  test('knows that "incrediblyLongPassword" is too long and returns a "TooLongLengthError" error', () => {
-    const result = PasswordValidator.validate('incrediblyLongPassword')
+  describe('knows whether a password is too long', () => {
+    it.each(['incrediblyLongPassword'])(
+      'knows that %p is too long and returns a "TooLongLengthError" error',
+      (value) => {
+        const result = PasswordValidator.validate(value)
 
-    expect(result.result).toBe(false)
-    expect(result.errors[0]).toBe('TooLongLengthError')
+        expect(result.result).toBe(false)
+        expect(result.errors[0]).toBe('TooLongLengthError')
+      }
+    )
   })
 })
