@@ -14,6 +14,13 @@ export class PasswordValidator {
       }
     }
 
+    if (!/\d/.test(str)) {
+      return {
+        result: false,
+        errors: ['InvalidCharactersError'],
+      }
+    }
+
     return {
       result: true,
       errors: [],
