@@ -7,5 +7,10 @@ describe('StatsCalculator', () => {
 
       expect(output.min).toEqual(1)
     })
+    it('should output "4" when the serie is [11, 6, 31, 4]', () => {
+      const output = StatsCalculator.calculate([11, 6, 31, 4])
+
+      expect(output.min).toEqual(4)
+    })
   })
 })
