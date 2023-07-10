@@ -31,7 +31,7 @@ describe('StatsCalculator', () => {
     it('should output "4" when the serie is [1, 2, 3, 4]', () => {
       const output = StatsCalculator.calculate([1, 2, 3, 4])
 
-      expect(output.count).toEqual(2.5)
+      expect(output.average).toEqual(2.5)
     })
   })
 })

@@ -9,10 +9,12 @@ export class StatsCalculator {
 
     const count = sequence.length
 
+    const average = sequence.reduce((sum, current) => sum + current) / count
+
     return {
       min,
       max,
-      average: 0,
+      average,
       count,
     }
   }
