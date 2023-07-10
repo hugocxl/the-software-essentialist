@@ -42,4 +42,24 @@ describe('PasswordValidator', () => {
       }
     )
   })
+  describe('knows whether a password contains at least one upper case letter', () => {
+    it.each(['software1', '1essentialist'])(
+      'knows that %p does not contains any upper letter and returns an "InvalidCharactersError" error',
+      (value) => {
+        const result = PasswordValidator.validate(value)
+
+        expect(result.result).toBe(false)
+        expect(result.errors[0]).toBe('InvalidCharactersError')
+      }
+    )
+    it.each(['softWare1', '2eSSentialist'])(
+      'knows that %p contains at least an upper letter',
+      (value) => {
+        const result = PasswordValidator.validate(value)
+
+        expect(result.result).toBe(true)
+        expect(result.errors.length).toBe(0)
+      }
+    )
+  })
 })
