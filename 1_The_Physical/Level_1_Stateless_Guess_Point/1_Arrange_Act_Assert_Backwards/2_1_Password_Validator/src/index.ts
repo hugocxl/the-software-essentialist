@@ -13,23 +13,14 @@ export class PasswordValidator {
   }
 
   public static validate(str: string): Result {
-    if (!this.checkLength(str)) {
-      return {
-        result: false,
-        errors: ['InvalidLengthError'],
-      }
-    }
+    const errors: string[] = []
 
-    if (!this.checkCharacters(str)) {
-      return {
-        result: false,
-        errors: ['InvalidCharactersError'],
-      }
-    }
+    if (!this.checkLength(str)) errors.push('InvalidLengthError')
+    if (!this.checkCharacters(str)) errors.push('InvalidCharactersError')
 
     return {
-      result: true,
-      errors: [],
+      result: Boolean(!errors.length),
+      errors,
     }
   }
 }
