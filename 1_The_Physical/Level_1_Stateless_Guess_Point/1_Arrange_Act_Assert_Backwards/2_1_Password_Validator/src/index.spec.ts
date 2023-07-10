@@ -32,7 +32,7 @@ describe('PasswordValidator', () => {
         expect(result.errors[0]).toBe('InvalidCharactersError')
       }
     )
-    it.each(['software1', '2essentialist'])(
+    it.each(['softWare1', '2essenTialist'])(
       'knows that %p contains at least a digit',
       (value) => {
         const result = PasswordValidator.validate(value)

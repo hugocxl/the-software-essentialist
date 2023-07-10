@@ -21,6 +21,13 @@ export class PasswordValidator {
       }
     }
 
+    if (!/[A-Z]/.test(str)) {
+      return {
+        result: false,
+        errors: ['InvalidCharactersError'],
+      }
+    }
+
     return {
       result: true,
       errors: [],
