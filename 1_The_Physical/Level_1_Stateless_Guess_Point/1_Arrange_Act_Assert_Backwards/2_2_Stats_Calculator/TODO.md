@@ -36,8 +36,8 @@ Stats calculator is able to process a sequence of integers to determine:
 
 ```ts
 interface StatsResult {
-  minimum: number
-  maximum: number
+  min: number
+  max: number
   average: number
   count: number
 }
