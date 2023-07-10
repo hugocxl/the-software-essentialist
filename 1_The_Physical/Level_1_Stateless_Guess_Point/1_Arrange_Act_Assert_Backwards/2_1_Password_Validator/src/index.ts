@@ -1,27 +1,26 @@
+interface Result {
+  result: boolean
+  errors: string[]
+}
+
 export class PasswordValidator {
-  public static validate(str: string) {
-    if (str.length < 5) {
+  private static checkLength(str: string): boolean {
+    return str.length >= 5 && str.length <= 15
+  }
+
+  private static checkCharacters(str: string): boolean {
+    return /\d/.test(str) && /[A-Z]/.test(str)
+  }
+
+  public static validate(str: string): Result {
+    if (!this.checkLength(str)) {
       return {
         result: false,
-        errors: ['TooShortLengthError'],
+        errors: ['InvalidLengthError'],
       }
     }
 
-    if (str.length > 15) {
-      return {
-        result: false,
-        errors: ['TooLongLengthError'],
-      }
-    }
-
-    if (!/\d/.test(str)) {
-      return {
-        result: false,
-        errors: ['InvalidCharactersError'],
-      }
-    }
-
-    if (!/[A-Z]/.test(str)) {
+    if (!this.checkCharacters(str)) {
       return {
         result: false,
         errors: ['InvalidCharactersError'],
