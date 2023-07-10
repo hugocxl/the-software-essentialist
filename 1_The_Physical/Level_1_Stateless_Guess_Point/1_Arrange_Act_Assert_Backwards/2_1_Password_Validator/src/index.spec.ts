@@ -14,7 +14,7 @@ describe('PasswordValidator', () => {
   })
 
   describe('knows whether a password is too long', () => {
-    it.each(['incrediblyLongPassword'])(
+    it.each(['incrediblyLongPassword', 'anotherSuperLongPassword'])(
       'knows that %p is too long and returns a "TooLongLengthError" error',
       (value) => {
         const result = PasswordValidator.validate(value)
