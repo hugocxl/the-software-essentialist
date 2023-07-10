@@ -27,4 +27,11 @@ describe('StatsCalculator', () => {
       expect(output.count).toEqual(4)
     })
   })
+  describe('knows how to calculate the average in a serie', () => {
+    it('should output "4" when the serie is [1, 2, 3, 4]', () => {
+      const output = StatsCalculator.calculate([1, 2, 3, 4])
+
+      expect(output.count).toEqual(2.5)
+    })
+  })
 })
