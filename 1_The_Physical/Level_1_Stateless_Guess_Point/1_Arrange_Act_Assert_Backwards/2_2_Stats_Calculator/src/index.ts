@@ -7,11 +7,13 @@ export class StatsCalculator {
       current > max ? current : max
     )
 
+    const count = sequence.length
+
     return {
       min,
       max,
       average: 0,
-      count: 0,
+      count,
     }
   }
 }
