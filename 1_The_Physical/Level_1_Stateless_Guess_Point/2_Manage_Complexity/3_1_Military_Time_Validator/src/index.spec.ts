@@ -12,6 +12,11 @@ describe('MilitaryTimeValidator', () => {
 
       expect(output).toBeFalsy()
     })
+    it('knows that "21:00" is not in a time range format', () => {
+      const output = MilitaryTimeValidator.validate('21:00')
+
+      expect(output).toBeFalsy()
+    })
     it('knows that "01:12 - 14:32" is in a time range format', () => {
       const output = MilitaryTimeValidator.validate(examples.true[0])
 
