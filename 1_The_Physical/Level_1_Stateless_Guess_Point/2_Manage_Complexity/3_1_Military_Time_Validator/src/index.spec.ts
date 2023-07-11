@@ -3,13 +3,16 @@ import { MilitaryTimeValidator } from './index'
 const examples = {
   timeFormat: {
     valid: ['01:12 - 14:32', '22:00 - 23:12', '16:43 - 00:19'],
-    incorrect: ['house', '1800', '21:00', '1800 - 2240', '1800 - 22:00'],
+    invalid: ['house', '1800', '21:00', '1800 - 2240', '1800 - 22:00'],
+  },
+  militaryTime: {
+    invalid: ['25:00 - 18:00'],
   },
 }
 
 describe('MilitaryTimeValidator', () => {
   describe('knows whether a string is in a time range format', () => {
-    it.each(examples.timeFormat.incorrect)(
+    it.each(examples.timeFormat.invalid)(
       'knows that "%s" is not in a time range format',
       (input) => {
         const output = MilitaryTimeValidator.validate(input)
@@ -23,6 +26,16 @@ describe('MilitaryTimeValidator', () => {
         const output = MilitaryTimeValidator.validate(input)
 
         expect(output).toBeTruthy()
+      }
+    )
+  })
+  describe('knows whether a input is a valid military time', () => {
+    it.each(examples.militaryTime.invalid)(
+      'knows that "%s" is not a valid military time range',
+      (input) => {
+        const output = MilitaryTimeValidator.validate(input)
+
+        expect(output).toBeFalsy()
       }
     )
   })
