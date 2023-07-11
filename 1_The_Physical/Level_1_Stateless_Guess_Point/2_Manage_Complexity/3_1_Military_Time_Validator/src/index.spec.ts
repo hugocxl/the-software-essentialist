@@ -12,6 +12,7 @@ const examples = {
       '17:24 - 25:00',
       '17:24 - 22:87',
     ],
+    valid: ['01:12 - 14:32', '22:00 - 23:12', '16:43 - 00:19'],
   },
 }
 
@@ -34,13 +35,21 @@ describe('MilitaryTimeValidator', () => {
       }
     )
   })
-  describe('knows whether a input is a valid military time', () => {
+  describe('knows whether a input is a military time range', () => {
     it.each(examples.militaryTime.invalid)(
-      'knows that "%s" is not a valid military time range',
+      'knows that "%s" is not a military time range',
       (input) => {
         const output = MilitaryTimeValidator.validate(input)
 
         expect(output).toBeFalsy()
+      }
+    )
+    it.each(examples.militaryTime.valid)(
+      'knows that "%s" is a military time range',
+      (input) => {
+        const output = MilitaryTimeValidator.validate(input)
+
+        expect(output).toBeTruthy()
       }
     )
   })
