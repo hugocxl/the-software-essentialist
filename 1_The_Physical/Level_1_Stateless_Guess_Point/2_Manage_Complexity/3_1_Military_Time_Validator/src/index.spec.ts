@@ -17,5 +17,13 @@ describe('MilitaryTimeValidator', () => {
         expect(output).toBeFalsy()
       }
     )
+    it.each(examples.timeFormat.valid)(
+      'knows that "%s" is in a time range format',
+      (input) => {
+        const output = MilitaryTimeValidator.validate(input)
+
+        expect(output).toBeTruthy()
+      }
+    )
   })
 })

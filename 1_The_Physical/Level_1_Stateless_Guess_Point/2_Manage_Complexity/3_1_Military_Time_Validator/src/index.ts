@@ -3,9 +3,8 @@ export class MilitaryTimeValidator {
     const [startTime, endTime] = timeRange.split(' - ')
 
     return (
-      startTime.includes('-') &&
+      timeRange.includes('-') &&
       startTime.includes(':') &&
-      endTime.includes('-') &&
       endTime.includes(':')
     )
   }
