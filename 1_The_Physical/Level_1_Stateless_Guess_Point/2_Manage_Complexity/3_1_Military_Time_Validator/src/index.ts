@@ -6,7 +6,8 @@ export class MilitaryTimeValidator {
       timeRange.includes('-') &&
       startTime.includes(':') &&
       endTime.includes(':') &&
-      Number(startTime.split(':')[0]) < 24
+      Number(startTime.split(':')[0]) < 24 &&
+      Number(startTime.split(':')[1]) < 60
     )
   }
 }
