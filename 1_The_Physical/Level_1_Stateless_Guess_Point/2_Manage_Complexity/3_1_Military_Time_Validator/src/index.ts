@@ -7,12 +7,13 @@ export class MilitaryTimeValidator {
     return isHourValid && areMinutesValid
   }
 
+  private static isValidTime(time: string): boolean {
+    return Boolean(time) && this.isMilitaryTime(time)
+  }
+
   public static validate(timeRange: string): boolean {
     const [startTime, endTime] = timeRange.split(' - ')
-    const isValidStartTime =
-      Boolean(startTime) && this.isMilitaryTime(startTime)
-    const isValidEndTime = Boolean(endTime) && this.isMilitaryTime(endTime)
 
-    return isValidStartTime && isValidEndTime
+    return this.isValidTime(startTime) && this.isValidTime(endTime)
   }
 }
