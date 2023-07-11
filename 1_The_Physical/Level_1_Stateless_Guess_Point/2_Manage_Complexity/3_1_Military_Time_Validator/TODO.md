@@ -13,8 +13,8 @@ Write a function (or a stateless class) capable of validating whether a string t
 
 ### False
 
-- "12j3323"
-- "21:00 - 25:23"
+- "house"
+- "21:00"
 - "25:00 - 12:23"
 
 ### True
