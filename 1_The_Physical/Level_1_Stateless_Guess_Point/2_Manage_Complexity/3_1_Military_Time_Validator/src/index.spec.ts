@@ -7,6 +7,11 @@ const examples = {
 
 describe('MilitaryTimeValidator', () => {
   describe('knows whether a string is in a time range format', () => {
+    it('knows that "" is not in a time range format', () => {
+      const output = MilitaryTimeValidator.validate('')
+
+      expect(output).toBeFalsy()
+    })
     it('knows that "01:12 - 14:32" is in a time range format', () => {
       const output = MilitaryTimeValidator.validate(examples.true[0])
 

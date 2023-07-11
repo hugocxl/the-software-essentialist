@@ -1,5 +1,5 @@
 export class MilitaryTimeValidator {
   public static validate(timeRange: string): boolean {
-    return true
+    return !!timeRange
   }
 }
