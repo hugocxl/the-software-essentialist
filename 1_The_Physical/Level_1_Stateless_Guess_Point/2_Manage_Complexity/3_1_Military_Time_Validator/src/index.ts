@@ -1,8 +1,10 @@
 export class MilitaryTimeValidator {
   private static isMilitaryTime(time: string): boolean {
     const [hour, minutes] = time.split(':')
+    const isHourValid = Number(hour) < 24 && hour.length === 2
+    const areMinutesValid = Number(minutes) < 60 && minutes.length === 2
 
-    return Number(hour) < 24 && Number(minutes) < 60
+    return isHourValid && areMinutesValid
   }
 
   public static validate(timeRange: string): boolean {

@@ -3,7 +3,15 @@ import { MilitaryTimeValidator } from './index'
 const examples = {
   timeFormat: {
     valid: ['01:12 - 14:32', '22:00 - 23:12', '16:43 - 00:19'],
-    invalid: ['house', '1800', '21:00', '1800 - 2240', '1800 - 22:00'],
+    invalid: [
+      'house',
+      '1800',
+      '21:00',
+      '1800 - 2240',
+      '1800 - 22:00',
+      '8:00 - 22:00',
+      '08:00 - 22:0',
+    ],
   },
   militaryTime: {
     invalid: [
