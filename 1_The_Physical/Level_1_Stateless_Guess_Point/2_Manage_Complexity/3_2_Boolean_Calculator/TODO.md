@@ -17,6 +17,7 @@ Create a boolean calculator that takes a boolean expression (as a string) and ev
 
 - "TRUE" -> true
 - "FALSE" -> true
+- "false" -> false
 - "ASDF" -> false
 - "NSD TRUE" -> false
 - "TRUE2" -> false
@@ -58,7 +59,18 @@ Create a boolean calculator that takes a boolean expression (as a string) and ev
 ### API Upfront design
 
 ```ts
+type EvaluationSuccessResult = {
+  result: boolean;
+  error: null;
+};
+type EvaluationErrorResult = {
+  result:  'error;
+  error: string
+};
+
+type EvaluationResult = EvaluationSuccessResult | EvaluationErrorResult;
+
 interface BooleanCalculator {
-  evaluate(expression: string): boolean;
+  evaluate(expression: ): EvaluationResult;
 }
 ```
