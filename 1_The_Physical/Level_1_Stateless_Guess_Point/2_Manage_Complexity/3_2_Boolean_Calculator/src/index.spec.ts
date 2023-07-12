@@ -10,7 +10,8 @@ const EXAMPLES = {
     true: ['TRUE', 'NOT FALSE'],
   },
   complexBooleanExpressions: {
-    valid: ['TRUE AND TRUE', 'TRUE AND NOT FALSE'],
+    valid: ['TRUE AND TRUE', 'TRUE AND NOT FALSE', 'TRUE OR FALSE'],
+    invalid: ['TRUE AND', 'TRUE N FALSE'],
   },
 }
 
@@ -58,6 +59,14 @@ describe('BooleanCalculator', () => {
         const output = BooleanCalculator.evaluate(input)
 
         expect(output.error).toBeNull()
+      }
+    )
+    test.each(EXAMPLES.complexBooleanExpressions.invalid)(
+      'knows that "%s" is an invalid boolean expression',
+      (input) => {
+        const output = BooleanCalculator.evaluate(input)
+
+        expect(output.result).toEqual('error')
       }
     )
   })
