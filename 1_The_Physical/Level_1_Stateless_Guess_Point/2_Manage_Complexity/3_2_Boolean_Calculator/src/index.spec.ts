@@ -2,8 +2,8 @@ import { BooleanCalculator } from './index'
 
 const EXAMPLES = {
   simpleBooleanExpressions: {
-    valid: ['TRUE', 'FALSE'],
-    invalid: ['ASDF', 'false'],
+    valid: ['TRUE', 'FALSE', 'NOT FALSE', 'NOT TRUE'],
+    invalid: ['ASDF', 'false', 'NSD TRUE', 'TRUE2', 'TRUE NOT'],
   },
 }
 

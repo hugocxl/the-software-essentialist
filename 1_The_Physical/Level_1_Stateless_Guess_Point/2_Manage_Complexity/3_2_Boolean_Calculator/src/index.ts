@@ -12,7 +12,19 @@ type EvaluationResult = EvaluationSuccessResult | EvaluationErrorResult
 
 export class BooleanCalculator {
   public static evaluate(expression: string): EvaluationResult {
-    if (expression.includes('TRUE') || expression.includes('FALSE')) {
+    const [booleanOrOperator, boolean] = expression.split(' ')
+
+    if (
+      booleanOrOperator === 'NOT' &&
+      (boolean === 'TRUE' || boolean === 'FALSE')
+    ) {
+      return {
+        result: true,
+        error: null,
+      }
+    }
+
+    if (expression === 'TRUE' || expression === 'FALSE') {
       return {
         result: true,
         error: null,
