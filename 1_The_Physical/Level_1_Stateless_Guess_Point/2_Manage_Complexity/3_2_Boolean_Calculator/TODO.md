@@ -54,3 +54,11 @@ Create a boolean calculator that takes a boolean expression (as a string) and ev
 - "TRUE OR FALSE AND NOT FALSE" -> true
 - "(TRUE OR TRUE OR TRUE) AND FALSE" -> false
 - "NOT (TRUE AND TRUE)" -> false
+
+### API Upfront design
+
+```ts
+interface BooleanCalculator {
+  evaluate(expression: string): boolean;
+}
+```
