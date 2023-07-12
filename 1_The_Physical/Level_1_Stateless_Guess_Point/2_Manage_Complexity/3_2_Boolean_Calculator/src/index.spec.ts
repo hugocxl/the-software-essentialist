@@ -5,6 +5,9 @@ const EXAMPLES = {
     valid: ['TRUE', 'FALSE', 'NOT FALSE', 'NOT TRUE'],
     invalid: ['ASDF', 'false', 'NSD TRUE', 'TRUE2', 'TRUE NOT'],
   },
+  simpleBooleanEvaluations: {
+    false: ['FALSE'],
+  },
 }
 
 describe('BooleanCalculator', () => {
@@ -23,6 +26,16 @@ describe('BooleanCalculator', () => {
         const output = BooleanCalculator.evaluate(input)
 
         expect(output.result).toEqual('error')
+      }
+    )
+  })
+  describe('knows to evaluate simple boolean expressions', () => {
+    test.each(EXAMPLES.simpleBooleanEvaluations.false)(
+      'knows that "%s" is a falsy boolean',
+      (input) => {
+        const output = BooleanCalculator.evaluate(input)
+
+        expect(output.result).toBe(false)
       }
     )
   })

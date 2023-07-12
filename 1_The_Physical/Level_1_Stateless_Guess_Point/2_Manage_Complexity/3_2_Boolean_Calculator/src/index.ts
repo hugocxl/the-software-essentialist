@@ -26,7 +26,7 @@ export class BooleanCalculator {
 
     if (expression === 'TRUE' || expression === 'FALSE') {
       return {
-        result: true,
+        result: !expression.toLowerCase(),
         error: null,
       }
     }
