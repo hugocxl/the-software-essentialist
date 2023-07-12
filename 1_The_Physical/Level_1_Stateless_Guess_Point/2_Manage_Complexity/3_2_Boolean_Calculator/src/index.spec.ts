@@ -3,6 +3,7 @@ import { BooleanCalculator } from './index'
 const EXAMPLES = {
   simpleBooleanExpressions: {
     valid: ['TRUE'],
+    invalid: ['ASDF'],
   },
 }
 
@@ -10,13 +11,18 @@ describe('BooleanCalculator', () => {
   describe('knows to identify simple boolean expressions', () => {
     test.each(EXAMPLES.simpleBooleanExpressions.valid)(
       'knows that "%s" is a valid boolean expression',
-      (expression) => {
-        const output = BooleanCalculator.evaluate('TRUE')
+      (input) => {
+        const output = BooleanCalculator.evaluate(input)
 
-        expect(output).toEqual({
-          result: true,
-          error: null,
-        })
+        expect(output.error).toBeNull()
+      }
+    )
+    test.each(EXAMPLES.simpleBooleanExpressions.invalid)(
+      'knows that "%s" is not a valid boolean expression',
+      (input) => {
+        const output = BooleanCalculator.evaluate(input)
+
+        expect(output.result).toEqual('error')
       }
     )
   })
