@@ -38,9 +38,11 @@ export class BooleanCalculator {
         this.validateOperator(operator1) &&
         this.validateOperator(operator2)
       ) {
+        const result = expression.includes(' OR ')
+          ? this.evaluateBoolean(operator1) || this.evaluateBoolean(operator2)
+          : this.evaluateBoolean(operator1) && this.evaluateBoolean(operator2)
         return {
-          result:
-            this.evaluateBoolean(operator1) && this.evaluateBoolean(operator2),
+          result,
           error: null,
         }
       }

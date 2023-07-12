@@ -13,6 +13,9 @@ const EXAMPLES = {
     valid: ['TRUE AND TRUE', 'TRUE AND NOT FALSE', 'TRUE OR FALSE'],
     invalid: ['TRUE AND', 'TRUE N FALSE'],
   },
+  complexBooleanEvaluations: {
+    true: ['TRUE OR FALSE'],
+  },
 }
 
 describe('BooleanCalculator', () => {
@@ -67,6 +70,17 @@ describe('BooleanCalculator', () => {
         const output = BooleanCalculator.evaluate(input)
 
         expect(output.result).toEqual('error')
+      }
+    )
+  })
+
+  describe('knows to evaluate complex boolean expressions', () => {
+    test.each(EXAMPLES.complexBooleanEvaluations.true)(
+      'knows that "%s" is a truthy boolean',
+      (input) => {
+        const output = BooleanCalculator.evaluate(input)
+
+        expect(output.result).toBe(true)
       }
     )
   })
