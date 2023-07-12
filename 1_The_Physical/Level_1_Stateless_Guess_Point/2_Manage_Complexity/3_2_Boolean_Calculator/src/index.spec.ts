@@ -6,7 +6,7 @@ const EXAMPLES = {
     invalid: ['ASDF', 'false', 'NSD TRUE', 'TRUE2', 'TRUE NOT'],
   },
   simpleBooleanEvaluations: {
-    false: ['FALSE'],
+    false: ['FALSE', 'NOT TRUE'],
     true: ['TRUE'],
   },
 }

@@ -19,7 +19,7 @@ export class BooleanCalculator {
       (boolean === 'TRUE' || boolean === 'FALSE')
     ) {
       return {
-        result: true,
+        result: !JSON.parse(boolean.toLowerCase()),
         error: null,
       }
     }
