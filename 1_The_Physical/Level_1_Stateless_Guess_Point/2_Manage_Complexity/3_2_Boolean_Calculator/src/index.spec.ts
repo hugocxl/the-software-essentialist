@@ -7,6 +7,7 @@ const EXAMPLES = {
   },
   simpleBooleanEvaluations: {
     false: ['FALSE'],
+    true: ['TRUE'],
   },
 }
 
@@ -36,6 +37,14 @@ describe('BooleanCalculator', () => {
         const output = BooleanCalculator.evaluate(input)
 
         expect(output.result).toBe(false)
+      }
+    )
+    test.each(EXAMPLES.simpleBooleanEvaluations.true)(
+      'knows that "%s" is a truthy boolean',
+      (input) => {
+        const output = BooleanCalculator.evaluate(input)
+
+        expect(output.result).toBe(true)
       }
     )
   })

@@ -26,7 +26,7 @@ export class BooleanCalculator {
 
     if (expression === 'TRUE' || expression === 'FALSE') {
       return {
-        result: !expression.toLowerCase(),
+        result: JSON.parse(expression.toLowerCase()),
         error: null,
       }
     }
