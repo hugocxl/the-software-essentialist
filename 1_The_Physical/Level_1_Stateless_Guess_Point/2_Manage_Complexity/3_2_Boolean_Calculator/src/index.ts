@@ -29,7 +29,17 @@ export class BooleanCalculator {
       : !JSON.parse(str.replace('NOT', '').toLowerCase())
   }
 
-  public static evaluate(expression: string): EvaluationResult {
+  public static evaluate (expression: string): EvaluationResult {
+    if (expression.includes(' AND ')) {
+      const [operator1, operator2] = expression.split(' AND ')
+      if (this.validateOperator(operator1) && this.validateOperator(operator2)) { 
+        return {
+          result: this.evaluateBoolean(operator1) && this.evaluateBoolean(operator2),
+          error: null,
+        }
+      }
+    }
+
     if (this.validateOperator(expression)) {
       return {
         result: this.evaluateBoolean(expression),
