@@ -12,7 +12,7 @@ type EvaluationResult = EvaluationSuccessResult | EvaluationErrorResult
 
 export class BooleanCalculator {
   public static evaluate(expression: string): EvaluationResult {
-    if (expression.includes('TRUE')) {
+    if (expression.includes('TRUE') || expression.includes('FALSE')) {
       return {
         result: true,
         error: null,
