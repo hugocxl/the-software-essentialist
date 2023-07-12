@@ -11,22 +11,28 @@ type EvaluationErrorResult = {
 type EvaluationResult = EvaluationSuccessResult | EvaluationErrorResult
 
 export class BooleanCalculator {
+  private static validateBoolean(str: string): boolean {
+    return str === 'TRUE' || str === 'FALSE'
+  }
+
+  private static validateOperator(operator: string): boolean {
+    const [booleanOrOperator, boolean] = operator.split(' ')
+
+    return booleanOrOperator === 'NOT'
+      ? this.validateBoolean(boolean)
+      : this.validateBoolean(operator)
+  }
+
+  private static evaluateBoolean(str: string): boolean {
+    return str.indexOf('NOT') === -1
+      ? JSON.parse(str.toLowerCase())
+      : !JSON.parse(str.replace('NOT', '').toLowerCase())
+  }
+
   public static evaluate(expression: string): EvaluationResult {
-    const [booleanOrOperator, boolean] = expression.split(' ')
-
-    if (
-      booleanOrOperator === 'NOT' &&
-      (boolean === 'TRUE' || boolean === 'FALSE')
-    ) {
+    if (this.validateOperator(expression)) {
       return {
-        result: !JSON.parse(boolean.toLowerCase()),
-        error: null,
-      }
-    }
-
-    if (expression === 'TRUE' || expression === 'FALSE') {
-      return {
-        result: JSON.parse(expression.toLowerCase()),
+        result: this.evaluateBoolean(expression),
         error: null,
       }
     }

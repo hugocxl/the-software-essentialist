@@ -7,7 +7,10 @@ const EXAMPLES = {
   },
   simpleBooleanEvaluations: {
     false: ['FALSE', 'NOT TRUE'],
-    true: ['TRUE'],
+    true: ['TRUE', 'NOT FALSE'],
+  },
+  complexBooleanExpressions: {
+    valid: ['TRUE AND TRUE'],
   },
 }
 
@@ -48,4 +51,14 @@ describe('BooleanCalculator', () => {
       }
     )
   })
+  // describe('knows to identify complex boolean expressions', () => {
+  //   test.each(EXAMPLES.complexBooleanExpressions.valid)(
+  //     'knows that "%s" is a valid boolean expression',
+  //     (input) => {
+  //       const output = BooleanCalculator.evaluate(input)
+
+  //       expect(output.error).toBeNull()
+  //     }
+  //   )
+  // })
 })
