@@ -3,7 +3,7 @@ import { BooleanCalculator } from './index'
 const EXAMPLES = {
   simpleBooleanExpressions: {
     valid: ['TRUE', 'FALSE'],
-    invalid: ['ASDF'],
+    invalid: ['ASDF', 'false'],
   },
 }
 
